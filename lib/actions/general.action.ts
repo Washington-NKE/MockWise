@@ -1,4 +1,4 @@
-prompt: `
+/*prompt: `
         You are an AI interviewer analyzing a mock interview. Your task is to evaluate the candidate based on structured categories. Be thorough and detailed in your analysis. Don't be lenient with the candidate. If there are mistakes or areas for improvement, point them out.
         Transcript:
         ${formattedTranscript}
@@ -12,3 +12,4 @@ prompt: `
         `,
 system:
         "You are a professional interviewer analyzing a mock interview. Your task is to evaluate the candidate based on structured categories",
+       */

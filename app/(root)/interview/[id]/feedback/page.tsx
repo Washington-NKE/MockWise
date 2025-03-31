@@ -1,4 +1,4 @@
-<section className="section-feedback">
+{/* <section className="section-feedback">
 <div className="flex flex-row justify-center">
   <h1 className="text-4xl font-semibold">
     Feedback on the Interview -{" "}
@@ -84,4 +84,4 @@
     </Link>
   </Button>
 </div>
-</section>
+</section> */}
