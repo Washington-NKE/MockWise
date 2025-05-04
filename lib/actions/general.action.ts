@@ -1,3 +1,43 @@
+import { db } from "@/firebase/admin";
+
+export async function getInterviewByUserId(userId: string): Promise<Interview[] | null> {
+        const interviews = await db
+        .collection('interviews')
+        .where('userId', '==', userId)
+        .orderBy('createdAt', 'desc')
+        .get();
+    
+        return interviews.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+        })) as Interview[];
+    }
+    
+    export async function getLatestInterviews(params: GetLatestInterviewsParams): Promise<Interview[] | null> {
+        const { userId, limit = 20 } = params;
+        const interviews = await db
+        .collection('interviews')
+        .orderBy('createdAt', 'desc')
+        .where('finalized', '==', true)
+        .where('userId', '!=', userId)
+        .limit(limit)
+        .get();
+    
+        return interviews.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+        })) as Interview[];
+    }
+
+    export async function getInterviewById(id: string): Promise<Interview | null> {
+        const interviews = await db
+        .collection('interviews')
+        .doc(id)
+        .get();
+    
+        return interviews.data() as Interview | null;
+    }
+
 /*prompt: `
         You are an AI interviewer analyzing a mock interview. Your task is to evaluate the candidate based on structured categories. Be thorough and detailed in your analysis. Don't be lenient with the candidate. If there are mistakes or areas for improvement, point them out.
         Transcript:
