@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer'
 import InterviewCard from '@/components/InterviewCard'
 import { Button } from '@/components/ui/button'
 import { getCurrentUser } from '@/lib/actions/auth.action'
@@ -15,8 +16,8 @@ const Homepage = async () => {
   ])
 
 
-  const hasPastInterviews = userInterviews?.length > 0;
-  const hasUpcomingInterviews = latestInterviews?.length > 0;
+  const hasPastInterviews = (userInterviews?.length ?? 0) > 0;
+  const hasUpcomingInterviews = (latestInterviews?.length ?? 0) > 0;
   return (
     <>
       <section className='card-cta'>
@@ -66,6 +67,8 @@ const Homepage = async () => {
         </div>
 
       </section>
+
+      <Footer />
     </>
   )
 }

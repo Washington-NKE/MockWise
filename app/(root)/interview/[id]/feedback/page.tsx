@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { getCurrentUser } from '@/lib/actions/auth.action';
 import { getFeebackByInterviewId, getInterviewById } from '@/lib/actions/general.action';
@@ -105,6 +106,8 @@ const page = async ({params}: RouteParams) => {
             </Link>
           </Button>
       </div>
+
+      <Footer />
     </section>
   )
 }
